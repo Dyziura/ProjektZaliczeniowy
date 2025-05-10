@@ -1,0 +1,45 @@
+# 📦 Pliki Pythona
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🧪 Logi i dane tymczasowe
+*.log
+*.tmp
+*.bak
+
+# ⚙️ Pliki konfiguracyjne środowiska
+.env
+*.env
+.env.*
+
+# 🧪 Raporty testowe (np. z Allure, HTML itp.)
+reports/
+allure-results/
+allure-report/
+*.html
+
+# 💻 Pliki IDE (VS Code, PyCharm itp.)
+.vscode/
+.idea/
+*.code-workspace
+
+# 📦 Pliki zależności
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# 🗂️ Katalogi testowe (jeśli generowane)
+output/
+test-output/
+
+# 🔒 Klucze / hasła
+*.pem
+*.key
+*.crt
+secrets.json
+
+# 🧰 Środowisko wirtualne
+venv/
