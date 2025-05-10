@@ -17,7 +17,14 @@ Testy automatyczne aplikacji [JPetStore](https://petstore.octoperf.com) z użyci
 
 ## Struktura projektu
 
-<pre> Projekt/ ├── Pages/ # Page Object classes ├── Tests/ # Test cases (unittest) ├── Test_data/ # Pliki CSV / dane testowe ├── venv/ # Środowisko wirtualne (nie commituj) ├── requirements.txt # Lista zależności └── README.md # Ten plik </pre>
+<pre> 
+Projekt/ 
+├── Pages/ # Page Object classes 
+├── Tests/ # Test cases (unittest) 
+├── Test_data/ # Pliki CSV / dane testowe 
+├── venv/ # Środowisko wirtualne (nie commituj) 
+├── requirements.txt # Lista zależności 
+└── README.md # Ten plik </pre>
 
 ---
 
