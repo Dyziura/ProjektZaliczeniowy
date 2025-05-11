@@ -14,7 +14,7 @@ class SignInPageVariables:
     """
     Sign In Page Variables
     """
-    invalidUsernamePassword = "Invalid username or password.  Signon failed."
+    invalidUsernamePassword = "Invalid username or password. Signon failed."
 
 class SignInPage(BasePage):
     """
