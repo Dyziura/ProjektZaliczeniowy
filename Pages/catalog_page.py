@@ -11,7 +11,7 @@ class CatalogPageLocators:
     searchButton = (By.CSS_SELECTOR, 'input[value="Search"]')
     searchMessage = (By.CSS_SELECTOR, '#Content ul.messages:nth-of-type(1) li:first-child')
     nameProduct = (By.CSS_SELECTOR, '#Catalog > table > tbody > tr:nth-child(2) > td:nth-child(3)')
-    signIn = (By.CSS_SELECTOR, 'a[href="/actions/Account.action?signonForm="]')
+    signIn = (By.CSS_SELECTOR, '#MenuContent > a:nth-child(3)')
     returnToMainMenu = (By.CSS_SELECTOR, '#BackLink > a')
     bodyMain = (By.CSS_SELECTOR, '#Main')
 

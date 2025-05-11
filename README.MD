@@ -29,8 +29,10 @@ Projekt/
 ---
 
 ## Uruchamianie testów
-
+Wszystkich testów z poziomu Projektu:
 - python -m unittest discover -s Tests -p '*_tests.py'
+Pojedynczych testów z poziomu Projektu (przykład dla sign_in_tests.py):
+- python -m unittest Tests.sign_in_tests
 
 ## Od autora
 
