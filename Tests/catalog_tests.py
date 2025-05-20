@@ -13,7 +13,7 @@ class CatalogTest(BaseTest):
 
     def setUp(self):
         super().setUp() #wywołanie z klasy nadrzędnej z base_test.py
-        # 2. Kliknij Enter the store
+        # 1. Załadowanie strony catalogu
         self.catalog_page = self.home_page.click_enter_button()
     
     def testSearchingInaccessibleProducts(self):
@@ -36,9 +36,18 @@ class CatalogTest(BaseTest):
         # 2. Kliknij Search
         self.catalog_page.enter_search_value(description)
         sleep(2)
-        # Sprawdź, czy pojawił się alert: "Please enter a keyword to search for, then press the search button."
+        # Sprawdź, czy treść wyszukiwana została znaleziona"
         self.assertEqual(expected_short_description, self.catalog_page.get_name_product())
         sleep(2)
+
+    def testClickingSignInButton(self):
+        # 1. Kliknij Sign In
+        self.catalog_page.sign_in_button()
+        sleep(2)
+        # 2. Sprawdź, czy strona logowania została otwarta
+        #self.assertTrue(self.catalog_page.is_Sign_In_Page())
+        #sleep(2)
+
 """ musze dopracowac aby po kazdym tescie klikalo w search i czyscilo pole search szykujac pole pod nowe dane
     def testSearchingAccessibleAllProducts(self):
         for row in self.test_data: #wykona wszystkie testy par z pliku CSV

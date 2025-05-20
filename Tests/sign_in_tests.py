@@ -6,8 +6,10 @@ class SignInTest(BaseTest):
     def setUp(self):
         super().setUp() #wywołanie z klasy nadrzędnej z base_test.py
         # 1. Załadowanie strony catalogu
+        sleep(5)
         self.catalog_page = self.home_page.click_enter_button()
         # 2. Załadowanie strony logowania
+        sleep(5)
         self.sign_in_page = self.catalog_page.sign_in_button()
 
     def testLogInInvalid(self):
