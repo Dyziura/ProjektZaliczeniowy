@@ -12,6 +12,7 @@ Testy automatyczne aplikacji [JPetStore](https://petstore.octoperf.com) z użyci
 - Python `>=3.10`
 - Google Chrome (lub inna przeglądarka)
 - Środowisko wirtualne (rekomendowane)
+- Biblioteki do pobrania w pliku requirements.txt
 
 ---
 
@@ -29,10 +30,10 @@ Projekt/
 ---
 
 ## Uruchamianie testów
-Wszystkich testów z poziomu Projektu:
-- python -m unittest discover -s Tests -p '*_tests.py'
-Pojedynczych testów z poziomu Projektu (przykład dla sign_in_tests.py):
-- python -m unittest Tests.sign_in_tests
+Wszystkich testów z poziomu Projektu wraz z generowaniem raportu:
+- python run_test.py
+Pojedynczych testów z poziomu Projektu (w pliku należy wprowadzić nazwy testów, które chcemy puścić) wraz z generowaniem raportu:
+- python run_selected_tests.py
 
 ## Od autora
 
