@@ -17,13 +17,15 @@ class CatalogTest(BaseTest):
         self.catalog_page = self.home_page.click_enter_button()
     
     def testSearchingInaccessibleProducts(self):
+        from Pages.catalog_page import CatalogPageVariables
         # 1. Wpisz coś do pola search
         sleep(2)
         # 2. Kliknij Search
         self.catalog_page.enter_search_value("")
         sleep(2)
         # Sprawdź, czy pojawił się alert: "Please enter a keyword to search for, then press the search button."
-        self.assertEqual("Please enter a keyword to search for, then press the search button.", self.catalog_page.get_alert_message())
+        self.assertEqual(CatalogPageVariables.infoMessageSearchField, self.catalog_page.get_alert_message())
+        #self.assertEqual("Please enter a keyword to search for, then press the search button.", self.catalog_page.get_alert_message())
         sleep(2)
 
     def testSearchingAccessibleRandomProduct(self):
@@ -47,6 +49,57 @@ class CatalogTest(BaseTest):
         # 2. Sprawdź, czy strona logowania została otwarta
         #self.assertTrue(self.catalog_page.is_Sign_In_Page())
         #sleep(2)
+
+    def testGoingToCatsList(self):
+        from Pages.catalog_page import CatalogPageLocators, CatalogPageVariables
+        # 1. Kliknij link do listy kotów
+        # 2. Przejdź do listy kotów
+        self.catalog_page.go_to_animal_list(CatalogPageLocators.catsList)
+        # 2. Sprawdź, czy strona listy zwierząt została otwarta - weryfikacja tytułu
+        title = self.catalog_page.get_title_animal_list()
+        self.assertEqual(CatalogPageVariables.titleCatsList, title)
+        sleep(5)
+
+    def testGoingToFishList(self):
+        from Pages.catalog_page import CatalogPageLocators, CatalogPageVariables
+        # 1. Kliknij link do listy ryb
+        # 2. Przejdź do listy ryb
+        self.catalog_page.go_to_animal_list(CatalogPageLocators.fishList)
+        # 2. Sprawdź, czy strona listy zwierząt została otwarta - weryfikacja tytułu
+        title = self.catalog_page.get_title_animal_list()
+        self.assertEqual(CatalogPageVariables.titleFishList, title)
+        sleep(5)
+
+    def testGoingToDogsList(self):
+        from Pages.catalog_page import CatalogPageLocators, CatalogPageVariables
+        # 1. Kliknij link do listy psów
+        # 2. Przejdź do listy psów
+        self.catalog_page.go_to_animal_list(CatalogPageLocators.dogsList)
+        # 2. Sprawdź, czy strona listy zwierząt została otwarta - weryfikacja tytułu
+        title = self.catalog_page.get_title_animal_list()
+        self.assertEqual(CatalogPageVariables.titleDogsList, title)
+        sleep(5)
+
+    def testGoingToReptilesList(self):
+        from Pages.catalog_page import CatalogPageLocators, CatalogPageVariables
+        # 1. Kliknij link do listy gadów
+        # 2. Przejdź do listy gadów
+        self.catalog_page.go_to_animal_list(CatalogPageLocators.reptilesList)
+        # 2. Sprawdź, czy strona listy zwierząt została otwarta - weryfikacja tytułu
+        title = self.catalog_page.get_title_animal_list()
+        self.assertEqual(CatalogPageVariables.titleReptilesList, title)
+        sleep(5)
+
+    def testGoingToBirdsList(self):
+        from Pages.catalog_page import CatalogPageLocators, CatalogPageVariables
+        # 1. Kliknij link do listy ptaków
+        # 2. Przejdź do listy ptaków
+        self.catalog_page.go_to_animal_list(CatalogPageLocators.birdsList)
+        # 2. Sprawdź, czy strona listy zwierząt została otwarta - weryfikacja tytułu
+        title = self.catalog_page.get_title_animal_list()
+        self.assertEqual(CatalogPageVariables.titleBirdsList, title)
+        sleep(5)
+
 
 """ musze dopracowac aby po kazdym tescie klikalo w search i czyscilo pole search szykujac pole pod nowe dane
     def testSearchingAccessibleAllProducts(self):

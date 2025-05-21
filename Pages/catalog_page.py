@@ -25,7 +25,18 @@ class CatalogPageLocators:
     randomItemFromList = (By.CSS_SELECTOR, 'a[href*="workingItemId=EST-"]') #oznacza, że szukamy linków zawierających "workingItemId=EST-"
     randomTableRow = (By.CSS_SELECTOR, 'table tr') #zwraca wiersze tabeli
     tableRowsWithItemId = (By.CSS_SELECTOR, 'a[href*="viewItem"]') #szukamy wierszy zawierających "viewItem" w tabeli
+    titleAnimalList = (By.CSS_SELECTOR, '#Catalog > h2') #szukamy tytułu listy zwierząt
 
+class CatalogPageVariables:
+    """
+    Catalog Page Variables
+    """
+    infoMessageSearchField = "Please enter a keyword to search for, then press the search button."
+    titleCatsList = "Cats" 
+    titleFishList = "Fish"
+    titleDogsList = "Dogs"
+    titleReptilesList = "Reptiles"
+    titleBirdsList = "Birds"
 
 class CatalogPage(BasePage):
     """
@@ -59,6 +70,14 @@ class CatalogPage(BasePage):
         # 2. Zwróć tekst produktu
         return self.driver.find_element(*CatalogPageLocators.nameProduct).text
     
+    def get_title_animal_list(self):
+        """
+        Get title list of animals
+        """
+        # 1. Znajdź nazwę produktu
+        # 2. Zwróć tekst produktu
+        return self.driver.find_element(*CatalogPageLocators.titleAnimalList).text
+    
     def sign_in_button(self):
         """
         Click Sign In button
@@ -88,33 +107,14 @@ class CatalogPage(BasePage):
         # 1. Otwiera listę ryb
         self.driver.find_element(*CatalogPageLocators.fishList).click()
 
-    def go_to_birds_list(self):
+    def go_to_animal_list(self, animalLocator):
         """
-        Go to birds list
+        Go to animal list
         """
-        # 1. Otwiera listę ptaków
-        self.driver.find_element(*CatalogPageLocators.birdsList).click()
-    
-    def go_to_dogs_list(self):
-        """
-        Go to dogs list
-        """
-        # 1. Otwiera listę psów
-        self.driver.find_element(*CatalogPageLocators.dogsList).click()
-    
-    def go_to_reptiles_list(self):
-        """
-        Go to reptiles list
-        """
-        # 1. Otwiera listę gadów
-        self.driver.find_element(*CatalogPageLocators.reptilesList).click()
-    
-    def go_to_cats_list(self):
-        """
-        Go to cats list
-        """
+        # sprawdzenie metody
+        #print(f"Klikam w: {animalLocator}")
         # 1. Otwiera listę kotów
-        self.driver.find_element(*CatalogPageLocators.catsList).click()
+        self.driver.find_element(*animalLocator).click()
     
     def click_random_product_id(self):
         """
