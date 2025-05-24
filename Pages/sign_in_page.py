@@ -9,12 +9,14 @@ class SignInPageLocators:
     passwordInput = (By.CSS_SELECTOR, 'input[name=password]') #Page Object naming convention
     loginButton = (By.CSS_SELECTOR, 'input[value="Login"]') #Page Object naming convention
     loginMessage = (By.CSS_SELECTOR, '#Content ul.messages:nth-of-type(1) li:first-child') #Page Object naming convention
+    pageCart = (By.CSS_SELECTOR, 'form[action*="Account"]')
 
 class SignInPageVariables:
     """
     Sign In Page Variables
     """
     invalidUsernamePassword = "Invalid username or password. Signon failed."
+    signInPageText = "Please enter your username and password.\nUsername:\nPassword:"
 
 class SignInPage(BasePage):
     """
@@ -57,5 +59,12 @@ class SignInPage(BasePage):
         # 1. Znajdź alert
         # 2. Zwróć tekst alertu
         return self.driver.find_element(*SignInPageLocators.loginMessage).text
+    
+    def is_Sign_In_Page(self):
+        """
+        Confirm presence of Sign In Page
+        """
+        # 1. Sprawdź, czy jesteś na stronie koszyka
+        return self.driver.find_element(*SignInPageLocators.pageCart).text
 
 #print(SignInPageVariables.invalidUsernamePassword) #do weryfikacji czy działa

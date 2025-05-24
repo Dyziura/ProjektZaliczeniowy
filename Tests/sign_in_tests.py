@@ -6,13 +6,13 @@ class SignInTest(BaseTest):
     def setUp(self):
         super().setUp() #wywołanie z klasy nadrzędnej z base_test.py
         # 1. Załadowanie strony catalogu
-        sleep(5)
         self.catalog_page = self.home_page.click_enter_button()
         # 2. Załadowanie strony logowania
-        sleep(5)
         self.sign_in_page = self.catalog_page.sign_in_button()
 
-    def testLogInInvalid(self):
+    def test_TC_00028_LogInInvalid(self):
+        """TC_00028: Logowanie z użyciem nieprawidłowych danych logowania"""
+        print("TC_00028: Logowanie z użyciem nieprawidłowych danych logowania")
         from Pages.sign_in_page import SignInPageVariables
         from Test_data.data_generator import FakeData
         fake = FakeData()

@@ -1,5 +1,6 @@
 from Pages.base_page import BasePage
 from Pages.sign_in_page import SignInPage
+from Pages.cart_page import CartPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import random
@@ -13,19 +14,41 @@ class CatalogPageLocators:
     searchMessage = (By.CSS_SELECTOR, '#Content ul.messages:nth-of-type(1) li:first-child')
     nameProduct = (By.CSS_SELECTOR, '#Catalog > table > tbody > tr:nth-child(2) > td:nth-child(3)')
     signIn = (By.LINK_TEXT, 'Sign In')
+    cartButton = (By.CSS_SELECTOR, 'img[name="img_cart"]') #link do koszyka
     #signIn = (By.CSS_SELECTOR, 'a[href="/actions/Account.action?signonForm="]')
     returnToMainMenu = (By.CSS_SELECTOR, '#BackLink > a')
     bodyMain = (By.CSS_SELECTOR, '#Main')
-    birdsList = (By.CSS_SELECTOR, 'area[alt=Birds]')
-    fishList = (By.CSS_SELECTOR, 'area[alt=Fish]')
-    dogsList = (By.CSS_SELECTOR, 'area[alt=Dogs]')
-    reptilesList = (By.CSS_SELECTOR, 'area[alt=Reptiles]')
-    catsList = (By.CSS_SELECTOR, 'area[alt=Cats]')
+    birdsList = (By.CSS_SELECTOR, 'area[alt=Birds]') #link portretowy do listy ptaków
+    fishList = (By.CSS_SELECTOR, 'area[alt=Fish]') #link portretowy do listy ryb
+    dogsList = (By.CSS_SELECTOR, 'area[alt=Dogs]') #link portretowy do listy psów
+    reptilesList = (By.CSS_SELECTOR, 'area[alt=Reptiles]') #link portretowy do listy gadów
+    catsList = (By.CSS_SELECTOR, 'area[alt=Cats]') #link portretowy do listy kotów
+    birdsList2 = (By.CSS_SELECTOR, 'img[src*="birds"]') #link napis do listy ptaków - pod koszykiem
+    fishList2 = (By.CSS_SELECTOR, 'img[src*="fish"]') #link napis do listy ryb - pod koszykiem
+    dogsList2 = (By.CSS_SELECTOR, 'img[src*="dogs"]') #link napis do listy psów - pod koszykiem
+    reptilesList2 = (By.CSS_SELECTOR, 'img[src*="reptiles"]') #link napis do listy gadów - pod koszykiem
+    catsList2 = (By.CSS_SELECTOR, 'img[src*="cats"]') #link napis do listy kotów - pod koszykiem
+    birdsList3 = (By.CSS_SELECTOR, 'img[src*="birds_icon"]') #link napis z opisem do listy ptaków
+    fishList3 = (By.CSS_SELECTOR, 'img[src*="fish_icon"]') #link napis z opisem do listy ryb
+    dogsList3 = (By.CSS_SELECTOR, 'img[src*="dogs_icon"]') #link napis z opisem do listy psów
+    reptilesList3 = (By.CSS_SELECTOR, 'img[src*="reptiles_icon"]') #link napis z opisem do listy gadów
+    catsList3 = (By.CSS_SELECTOR, 'img[src*="cats_icon"]') #link napis z opisem do listy kotów
     randomAnimalFromList = (By.CSS_SELECTOR, 'a[href*="productId"]') #* to match productId with any value after it and before it
     randomItemFromList = (By.CSS_SELECTOR, 'a[href*="workingItemId=EST-"]') #oznacza, że szukamy linków zawierających "workingItemId=EST-"
     randomTableRow = (By.CSS_SELECTOR, 'table tr') #zwraca wiersze tabeli
     tableRowsWithItemId = (By.CSS_SELECTOR, 'a[href*="viewItem"]') #szukamy wierszy zawierających "viewItem" w tabeli
+    titleAnimalList = (By.CSS_SELECTOR, '#Catalog > h2') #szukamy tytułu listy zwierząt
 
+class CatalogPageVariables:
+    """
+    Catalog Page Variables
+    """
+    infoMessageSearchField = "Please enter a keyword to search for, then press the search button."
+    titleCatsList = "Cats" 
+    titleFishList = "Fish"
+    titleDogsList = "Dogs"
+    titleReptilesList = "Reptiles"
+    titleBirdsList = "Birds"
 
 class CatalogPage(BasePage):
     """
@@ -59,6 +82,14 @@ class CatalogPage(BasePage):
         # 2. Zwróć tekst produktu
         return self.driver.find_element(*CatalogPageLocators.nameProduct).text
     
+    def get_title_animal_list(self):
+        """
+        Get title list of animals
+        """
+        # 1. Znajdź nazwę produktu
+        # 2. Zwróć tekst produktu
+        return self.driver.find_element(*CatalogPageLocators.titleAnimalList).text
+    
     def sign_in_button(self):
         """
         Click Sign In button
@@ -69,6 +100,17 @@ class CatalogPage(BasePage):
         el.click()
         # Zwróć stronę logowania
         return SignInPage(self.driver)
+    
+    def cart_button(self):
+        """
+        Click Cart button
+        """
+        # 1. Znajdź przycisk Sign In
+        el = self.driver.find_element(*CatalogPageLocators.cartButton)
+        # 2. Kliknij w przycisk
+        el.click()
+        # Zwróć stronę logowania
+        return CartPage(self.driver)
     
     def return_to_main_menu(self):
         """
@@ -88,33 +130,14 @@ class CatalogPage(BasePage):
         # 1. Otwiera listę ryb
         self.driver.find_element(*CatalogPageLocators.fishList).click()
 
-    def go_to_birds_list(self):
+    def go_to_animal_list(self, animalLocator):
         """
-        Go to birds list
+        Go to animal list
         """
-        # 1. Otwiera listę ptaków
-        self.driver.find_element(*CatalogPageLocators.birdsList).click()
-    
-    def go_to_dogs_list(self):
-        """
-        Go to dogs list
-        """
-        # 1. Otwiera listę psów
-        self.driver.find_element(*CatalogPageLocators.dogsList).click()
-    
-    def go_to_reptiles_list(self):
-        """
-        Go to reptiles list
-        """
-        # 1. Otwiera listę gadów
-        self.driver.find_element(*CatalogPageLocators.reptilesList).click()
-    
-    def go_to_cats_list(self):
-        """
-        Go to cats list
-        """
+        # sprawdzenie metody
+        #print(f"Klikam w: {animalLocator}")
         # 1. Otwiera listę kotów
-        self.driver.find_element(*CatalogPageLocators.catsList).click()
+        self.driver.find_element(*animalLocator).click()
     
     def click_random_product_id(self):
         """
