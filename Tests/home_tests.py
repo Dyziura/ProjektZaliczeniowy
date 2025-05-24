@@ -7,7 +7,9 @@ class HomeTest(BaseTest):
     #def setUp(self):
     #    super().setUp() #wywołanie z klasy nadrzędnej
 
-    def testOpeningCatalogPage(self):
+    def test_TC_00027_OpeningCatalogPage(self):
+        """TC_00027: Otworzenie strony z produktami z poziomu strony głównej"""
+        print("TC_00027: Otworzenie strony z produktami z poziomu strony głównej")
         # 1. Kliknij Enter the store
         self.catalog_page: CatalogPage = self.home_page.click_enter_button()
         # 2. Sprawdź, czy strona katalogu została otwarta

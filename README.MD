@@ -30,10 +30,16 @@ Projekt/
 ---
 
 ## Uruchamianie testów
+
 Wszystkich testów z poziomu Projektu wraz z generowaniem raportu:
+
 - python run_test.py
+
 Pojedynczych testów z poziomu Projektu (w pliku należy wprowadzić nazwy testów, które chcemy puścić) wraz z generowaniem raportu:
+
 - python run_selected_tests.py
+
+UWAGA: W plikach z testami dekoratorem można oznaczyć testy do pominięcia w programach run_test.py oraz run_selected_tests.py. Przykład: @unittest.skip("Tymczasowo wylaczony test. Wymaga dopracowania").
 
 ## Od autora
 

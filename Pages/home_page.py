@@ -20,9 +20,7 @@ class HomePage(BasePage):
         # 1. Znajdź przycisk Enter the store
         el = self.driver.find_element(*HomePageLocators.enterTheStoreButton) # * to rozpakowanie krotki czyli *(By.ID, "login2") = By.ID, "login2"
         # 2. Kliknij w przycisk
-        sleep(5)
         el.click()
-        sleep(5)
         # Zwróć stronę katalogu
         return CatalogPage(self.driver)
 
