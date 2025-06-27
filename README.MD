@@ -33,7 +33,7 @@ Projekt/
 
 Wszystkich testów z poziomu Projektu wraz z generowaniem raportu:
 
-- python run_test.py
+- python run_tests.py
 
 Pojedynczych testów z poziomu Projektu (w pliku należy wprowadzić nazwy testów, które chcemy puścić) wraz z generowaniem raportu:
 
